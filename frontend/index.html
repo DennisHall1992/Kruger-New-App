@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kruger Park Sightings</title>
+    <!-- Leaflet CSS from a reliable CDN -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha512-v/Q5L5dtyJpNhp6IYKz1ZAB9ulOU8SqAxVt+I6G5eaOxeDLJsHOnzqLNdFVf4y+A0hvJpYtdzO3foL72/dpF1w=="
+      crossorigin=""
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>🐘 Kruger Park Sightings</h1>
+    </header>
+    <!-- Map container occupies remaining viewport below the header -->
+    <div id="map"></div>
+    <!-- Floating Action Button to add a new sighting -->
+    <button id="addSightingBtn" title="Add a new sighting">+</button>
+    <!-- Modal overlay for adding a new sighting -->
+    <div id="sightingModal" class="modal hidden">
+      <h2>Add New Sighting</h2>
+      <form id="sightingForm">
+        <label for="species">Species</label>
+        <input type="text" id="species" name="species" required />
+        <label for="description">Description</label>
+        <textarea id="description" name="description" rows="3" required></textarea>
+        <label for="latitude">Latitude</label>
+        <!-- Name attributes must match server expectations: lat/lng -->
+        <input type="number" step="any" id="latitude" name="lat" required readonly />
+        <label for="longitude">Longitude</label>
+        <input type="number" step="any" id="longitude" name="lng" required readonly />
+        <label for="images">Images</label>
+        <input type="file" id="images" name="images" multiple accept="image/*" />
+        <label for="videos">Videos</label>
+        <input type="file" id="videos" name="videos" multiple accept="video/*" />
+        <button type="submit">Submit</button>
+        <button type="button" id="cancelBtn">Cancel</button>
+      </form>
+      <p class="hint">Click a location on the map to set coordinates</p>
+    </div>
+    <!-- Leaflet JS from CDN -->
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha512-fx6uwfXEFRtwYTdb0gk0MwmJ7nkV9sYjT+3NeH3mycCcBP2hE6I6SLCZdkPWQqK4xOg9y9YicPocV8FvS0pXaw=="
+      crossorigin=""
+    ></script>
+    <script src="app.js"></script>
+  </body>
+</html>
