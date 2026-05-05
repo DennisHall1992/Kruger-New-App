@@ -1,0 +1,186 @@
+/*
+  Styling for the Kruger Park Sightings application.
+  Uses a dark theme with green and red accents. Variables make it easy to tweak colours.
+*/
+
+:root {
+  --header-height: 56px;
+  --primary-color: #28a745; /* green for actions */
+  --danger-color: #dc3545; /* red for cancel */
+  --background-color: #1e1e1e;
+  --panel-color: #2a2a2a;
+  --text-color: #ffffff;
+  --muted-text-color: #cccccc;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  height: var(--header-height);
+  width: 100%;
+  background-color: var(--panel-color);
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: var(--box-shadow);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+/* Map container fills remaining viewport below header */
+#map {
+  position: absolute;
+  top: var(--header-height);
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+/* Floating Add Sighting button */
+#addSightingBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--box-shadow);
+}
+
+#addSightingBtn:hover {
+  filter: brightness(1.1);
+}
+
+/* Modal overlay styling */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--panel-color);
+  padding: 1.25rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  width: 90%;
+  max-width: 420px;
+  z-index: 1002;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.modal form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal label {
+  margin-top: 0.5rem;
+  margin-bottom: 0.25rem;
+  font-weight: bold;
+}
+
+.modal input[type="text"],
+.modal input[type="number"],
+.modal textarea {
+  background-color: #333;
+  border: 1px solid #555;
+  color: var(--text-color);
+  padding: 0.5rem;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.modal input[readonly] {
+  background-color: #444;
+}
+
+.modal input[type="file"] {
+  margin-top: 0.5rem;
+}
+
+.modal button[type="submit"] {
+  margin-top: 1rem;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  border: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal button[type="button"] {
+  margin-top: 0.5rem;
+  background-color: var(--danger-color);
+  color: var(--text-color);
+  border: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.hint {
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  color: var(--muted-text-color);
+}
+
+/* Leaflet default popup text colour fix for dark mode */
+.leaflet-popup-content-wrapper {
+  background-color: var(--panel-color);
+  color: var(--text-color);
+  border-radius: var(--border-radius);
+}
+.leaflet-popup-tip {
+  background-color: var(--panel-color);
+}
+
+img.popup-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-top: 0.5rem;
+  border-radius: 4px;
+}
+
+video.popup-video {
+  max-width: 100%;
+  margin-top: 0.5rem;
+  border-radius: 4px;
+}
